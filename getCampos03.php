@@ -31,12 +31,13 @@ echo "<br>";
 var_dump($res);
 // Faz uma leitura
 $row = $stmt->fetch();
+// Acrescentamos os atributos name nos campos INPUT
 echo "<br>________________________________<br>";
 echo "<h1>REGISTRO No. " . $Id . "</h1>";
 echo "<form method=\"post\" action=\"setCampos01.php?Id=" . $Id . "\">";
-echo "<label>Campo 1:</label><input type=text value=\"" . $row["Campo1"] . "\"><br>";
-echo "<label>Campo 2:</label><input type=text value=\"" . $row["Campo2"] . "\"><br>";
-echo "<label>Campo 3:</label><input type=text value=\"" . $row["Campo3"] . "\"><br>";
+echo "<label>Campo 1:</label><input name=\"campo1\" type=text value=\"" . $row["Campo1"] . "\"><br>";
+echo "<label>Campo 2:</label><input name=\"campo2\" type=text value=\"" . $row["Campo2"] . "\"><br>";
+echo "<label>Campo 3:</label><input name=\"campo3\" type=text value=\"" . $row["Campo3"] . "\"><br>";
 echo "<input type=submit value=\"Atualizar\"><br>";
 echo "</form>";
 ?>
