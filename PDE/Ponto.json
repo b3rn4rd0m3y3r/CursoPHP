@@ -1,0 +1,22 @@
+{
+	"titulo": "Controle de Ponto",
+	"subtitulo": "Registro de frequência mensal",
+	"tabela": "Ponto",
+	"permissao" : {
+		"add": "S",
+		"dele": "S",
+		"edit": "S",
+		"list": "S",
+		"view": "S"
+		},
+	"email": "true",
+	"campos": {
+		"0": {"nome": "Id", "label": "Id", "tam": "6", "tamtot": "6", "tipo": "I", "coduser": "0"},
+		"1": {"nome": "Matr", "label": "Matrícula", "tam": "6", "tamtot": "6", "tipo": "C", "coduser": "1"},
+		"2": {"nome": "DtReg", "label": "Data Registro", "tam": "10", "tamtot": "10", "tipo": "D", "coduser": "1"},
+		"3": {"nome": "HrEntMan", "label": "Hora Entrada Manhã", "tam": "5", "tamtot": "5", "tipo": "C", "coduser": "1"},
+		"4": {"nome": "HrSaiMan", "label": "Hora Saída Manhã", "tam": "5", "tamtot": "5", "tipo": "C", "coduser": "1"},
+		"5": {"nome": "HrEntTar", "label": "Hora Entrada Tarde", "tam": "5", "tamtot": "5", "tipo": "C", "coduser": "1"},
+		"6": {"nome": "HrSaiTar", "label": "Hora Saída Tarde", "tam": "5", "tamtot": "5", "tipo": "C", "coduser": "1"}
+		}
+	}

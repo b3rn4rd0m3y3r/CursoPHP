@@ -1,0 +1,14 @@
+/* Folha de Estilos para o PDE */
+BODY {
+	font-family: "Lucida Sans", Arial;
+	font-size: 14px;
+	}
+H1 ~ H2, H1.streito {
+	line-height: 105%;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	margin-block-start: 0em;
+	margin-block-end:  0em;
+	}
