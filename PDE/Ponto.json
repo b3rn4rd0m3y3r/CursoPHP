@@ -14,9 +14,16 @@
 		"0": {"nome": "Id", "label": "Id", "tam": "6", "tamtot": "6", "tipo": "I", "coduser": "0"},
 		"1": {"nome": "Matr", "label": "Matrícula", "tam": "6", "tamtot": "6", "tipo": "C", "coduser": "1"},
 		"2": {"nome": "DtReg", "label": "Data Registro", "tam": "10", "tamtot": "10", "tipo": "D", "coduser": "1"},
-		"3": {"nome": "HrEntMan", "label": "Hora Entrada Manhã", "tam": "5", "tamtot": "5", "tipo": "C", "coduser": "1"},
+		"3": {"nome": "HrEntMan", "label": "Hora Entrada Manhã", "tam": "5", "tamtot": "5", "tipo": "C", "coduser": "1",
+			"sele" :{
+				"0":"08:00",
+				"1":"08:30",
+				"2":"09:00"
+				}
+			},
 		"4": {"nome": "HrSaiMan", "label": "Hora Saída Manhã", "tam": "5", "tamtot": "5", "tipo": "C", "coduser": "1"},
 		"5": {"nome": "HrEntTar", "label": "Hora Entrada Tarde", "tam": "5", "tamtot": "5", "tipo": "C", "coduser": "1"},
-		"6": {"nome": "HrSaiTar", "label": "Hora Saída Tarde", "tam": "5", "tamtot": "5", "tipo": "C", "coduser": "1"}
+		"6": {"nome": "HrSaiTar", "label": "Hora Saída Tarde", "tam": "5", "tamtot": "5", "tipo": "C", "coduser": "1"},
+		"7": {"nome": "Observ", "label": "Observação", "tam": "50", "tamtot": "600", "tipo": "C", "coduser": "1"}
 		}
 	}

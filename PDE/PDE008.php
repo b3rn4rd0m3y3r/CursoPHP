@@ -1,5 +1,5 @@
 <html>
-	<!-- Declaração do array de tipos de dados -->
+	<!-- Formatação da exibição dos campos -->
 	<?php
 		function u2iso($tx){
 			return iconv("UTF-8", "ISO-8859-1", $tx);
@@ -30,7 +30,7 @@
 		$TITULO = $obj->titulo;
 		$SUBTITULO = $obj->subtitulo;
 		$arr = $obj->campos;
-		//print_r($arr);
+		print_r($TAM);
 	?>
 	<body>
 		<h1 class="streito"><?php echo u2iso($TITULO); ?></h1>
@@ -38,10 +38,19 @@
 		<table>
 		<?php
 			foreach ($arr as $chave => $valor) {
+				$NOME = $valor->nome;
+				$TAM = $valor->tam;
+				$TAMTOT = $valor->tamtot;
+				$TIPO = $valor->tipo;
 				echo "<tr>";
-					//echo $valor->nome . "," . u2iso($valor->label) . "," . $valor->tipo . "," . $valor->tam . "," . $valor->tamtot;
 					echo "<td><label>" . u2iso($valor->label) . "</label></td><td>";
-					echo "<input type=\"" . $arrTIPOS[$valor->tipo] . "\" size=\"" . $valor->tam . "\">";
+					// Decidir se coloca INPUT ou Textarea
+					if( $TAMTOT > 2*$TAM ){
+						$linhas = floor(intval($TAMTOT)/intval($TAM)); 
+						echo "<textarea id=\"" . $NOME . "\" name=\"" . $NOME . "\" rows=\"" . strval($linhas) ."\" cols=\"" . strval($TAM) . "\"></textarea>";
+						} else {
+						echo "<input id=\"" . $NOME . "\" name=\"" . $NOME . "\" type=\"" . $arrTIPOS[$TIPO] . "\" size=\"" . strval($TAM) . "\" maxlength=\"" . strval($TAMTOT) . "\">";
+						}
 					echo "</td>";
 				echo "</tr>";
 				}
