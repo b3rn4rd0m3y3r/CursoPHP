@@ -44,7 +44,7 @@
 							$linhas = floor(intval($TAMTOT)/intval($TAM));
 							echo "<textarea " . $ID . " rows=\"" . strval($linhas) ."\" cols=\"" . strval($TAM) . "\"></textarea>";
 							} else {
-							if( $valor->sele ){
+							if( isset($valor->sele) != false ){
 								$SELE = $valor->sele;
 								echo "<select>";
 								foreach ($SELE as $chave1 => $valor1) {

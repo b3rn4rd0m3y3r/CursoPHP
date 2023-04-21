@@ -35,7 +35,9 @@
 						$TAM = $valor->tam;
 						$TAMTOT = $valor->tamtot;
 						$TIPO = $valor->tipo;
-						if( $valor->sele ){
+						// Converte objeto valor para testar se existe sele
+						//$get_json = json_decode($valor);
+						if( isset($valor->sele) != false ){
 						//	$SELE = $valor->sele;
 							print_r($valor->sele);
 						//	echo "<br>";
