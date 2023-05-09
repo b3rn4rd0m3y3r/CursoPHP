@@ -20,14 +20,12 @@
 	$arr = $obj->campos;
 	$arrNomes = [];
 	$arrDec = json_decode(json_encode($arr), true);
-	//print_r($arrDec);
 	
 	foreach ($arrDec as $chave => $valor) {
 		$arrNomes[$arrDec[$chave]["nome"]] = $arrDec[$chave];
-		//print_r($arrNomes[$arrDec[$chave]["nome"]]);
-		//echo "<br>";
 		}
-	
-		
-	//print_r($arrNomes);
+	$IDFOUND = 0;
+	if( isset($_GET["Id"]) ){
+		$IDFOUND = 1;
+		}
 ?>
