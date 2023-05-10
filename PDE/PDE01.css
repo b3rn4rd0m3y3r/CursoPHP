@@ -12,9 +12,6 @@ H1 ~ H2, H1.streito {
 	margin-block-start: 0em;
 	margin-block-end:  0em;
 	}
-INPUT.qry {
-	width: 80px;
-	}
 SPAN.erro {
 	color:red;
 	font-weight: bold;

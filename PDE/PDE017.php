@@ -6,7 +6,7 @@
 	?>
 	<head>
 		<!-- Coleta dos campos da VIEW -->
-		<title>PDE015</title>
+		<title>PDE017</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
 		<meta name="robots" content="noindex, nofollow" />
 		<link rel="stylesheet" href="PDE01.css">
@@ -100,27 +100,27 @@
 				$conn->exec($strSQL);
 				include "connection_close.php";
 				break;
-			// Ação de preparação de  edição de registros
+			// AÃ§Ã£o de preparaÃ§Ã£o de  ediÃ§Ã£o de registros
 			case "edit":
-				if( $IDFOUND == 0 ){ // Teste de presença de um parâmetro Id
-					exit("<span class=erro>PDE - Edição necessita do parâmetro Id preenchido.</span>");
+				if( $IDFOUND == 0 ){ // Teste de presenÃ§a de um parÃ¢metro Id
+					exit("<span class=erro>PDE - EdiÃ§Ã£o necessita do parÃ¢metro Id preenchido.</span>");
 					}
 				$Id = $_GET["Id"];
-				// Teste de preenchimento do parâmetro Id
+				// Teste de preenchimento do parÃ¢metro Id
 				if( $Id == "" ){
-					exit("<span class=erro>PDE - Parâmetro Id presente mas não preenchido.</span>");
+					exit("<span class=erro>PDE - ParÃ¢metro Id presente mas nÃ£o preenchido.</span>");
 					}				
-				// Constrói o SQL para pesquisa do registro que tem este Id
+				// ConstrÃ³i o SQL para pesquisa do registro que tem este Id
 				$strSQL = "SELECT * FROM " . $TABELA . " WHERE Id = " .  $Id;
 				echo $strSQL . "<br>";
-				// Abre Conexão
+				// Abre ConexÃ£o
 				include "connection.php";
 				$comm = $conn->prepare($strSQL);
 				$comm->execute();
 				$row = $comm->fetch();
 				$CAMPOS = $row;
 				//print_r($CAMPOS);
-				// Fecha Conexão
+				// Fecha ConexÃ£o
 				include "connection_close.php";
 			?>
 			<form method="post" action="?action=editsave&CodUsr=1">
@@ -151,7 +151,7 @@
 								}
 							echo "</select>";
 							} else {							
-							// Não sendo Textarea e nem Select ...
+							// NÃ£o sendo Textarea e nem Select ...
 							echo "<input " . $ID . " type=\"" . $arrTIPOS[$TIPO] . "\" size=\"" . strval($TAM) . "\" maxlength=\"" . strval($TAMTOT) . "\">";
 							}
 						}
@@ -164,9 +164,9 @@
 			</form>
 			<?php					
 				break;
-			// Ação de persistência de  edição de registros
+			// AÃ§Ã£o de persistÃªncia de  ediÃ§Ã£o de registros
 			case "editsave":
-				// Coleta dos campos do formulário
+				// Coleta dos campos do formulÃ¡rio
 				echo "<table>";
 				foreach($_POST as $key => $value) {
 					echo "<tr><td>" . $key . "</td><td>" . $value . "</td><td>" . $arrNomes[$key]["tipo"] . "</td><td align=right>" . $arrNomes[$key]["tam"] . "</td></tr>";
@@ -174,7 +174,7 @@
 				echo "</table>";
 				echo "<br>";
 				$strSQL = "UPDATE " . $TABELA . " SET ";
-				// Especificação dos campos
+				// EspecificaÃ§Ã£o dos campos
 				foreach($_POST as $key => $value) {
 					if( $key != "Id" ){
 						$strSQL .= $key . " = ";
@@ -183,10 +183,10 @@
 							} else {
 							$strSQL .= "" . $value . ", ";
 							}						
-						$strSQL .= ", ";
 						}
 					}
 				$strSQL = substr($strSQL,0,strlen($strSQL)-2);
+				$strSQL .= " WHERE Id = " . $_POST["Id"];
 				echo $strSQL . "<br>";
 				break;
 			}
