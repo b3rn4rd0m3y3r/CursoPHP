@@ -5,6 +5,10 @@
 	function i2utf($tx){
 		return iconv("ISO-8859-1","UTF-8", $tx);
 		}
+	function dtSepar($sdate){
+		list($ano, $mes,$dia) = explode("-", $sdate);
+		return $dia . "/" . $mes . "/" . $ano;
+		}
 	header('Content-type: text/html; charset=ISO-8859-1');
 	$arrTIPOS = ["C"=>"text", "D"=>"date", "I"=>"text", "N"=>"number"];
 	// 1 - Leitura da configuração em JSON
@@ -28,4 +32,5 @@
 	if( isset($_GET["Id"]) ){
 		$IDFOUND = 1;
 		}
+	$BACK_MAIN_SCREEN = "<p><span class=big>&#128072;</span><a class=msgBott href=\"?CodUsr=1\">VOLTAR À TELA INICIAL</a></p>";
 ?>

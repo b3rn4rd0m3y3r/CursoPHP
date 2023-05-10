@@ -1,6 +1,6 @@
 {
-	"titulo": "Controle de Ponto",
-	"subtitulo": "Registro de frequência mensal",
+	"titulo": "Controle de Horário",
+	"subtitulo": "Registro de horário funcional",
 	"tabela": "Ponto",
 	"permissao" : {
 		"add": "S",
