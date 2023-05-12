@@ -10,7 +10,7 @@
 	?>
 	<head>
 		<!-- Coleta dos campos da VIEW -->
-		<title>PDE020</title>
+		<title>PDE021</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
 		<meta name="robots" content="noindex, nofollow" />
 		<link rel="stylesheet" href="PDE01.css">
@@ -199,6 +199,62 @@
 				$conn->exec($strSQL);
 				include "connection_close.php";				
 				echo $BACK_MAIN_SCREEN;
+				break;
+			// Ação de preparação de  deleção de registros
+			case "dele":
+				if( $IDFOUND == 0 ){ // Teste de presença de um parâmetro Id
+					exit("<span class=erro>PDE - Edição necessita do parâmetro Id preenchido.</span>");
+					}
+				$Id = $_GET["Id"];
+				// Teste de preenchimento do parâmetro Id
+				if( $Id == "" ){
+					exit("<span class=erro>PDE - Parâmetro Id presente mas não preenchido.</span>");
+					}				
+				// Constrói o SQL para pesquisa do registro que tem este Id
+				$strSQL = "SELECT * FROM " . $TABELA . " WHERE Id = " .  $Id;
+				echo $strSQL . "<br>";
+				// Abre Conexão
+				include "connection.php";
+				$comm = $conn->prepare($strSQL);
+				$comm->execute();
+				$row = $comm->fetch();
+				$CAMPOS = $row;
+				//print_r($CAMPOS);
+				// Fecha Conexão
+				include "connection_close.php";
+				?>
+				<!-- Formulário -->
+				<center>
+				<table class=entry>
+					<?php
+					foreach ($arr as $chave => $valor) {
+						$NOME = $valor->nome;
+						$LABEL = u2iso($valor->label);
+						$TAM = $valor->tam;
+						$TAMTOT = $valor->tamtot;
+						$TIPO = $valor->tipo;
+						echo "<tr><td><label>" . $LABEL . "</label></td><td>";
+						$ID = "id=\"" . $NOME . "\" name=\"" . $NOME . "\"";
+						echo "<input " . $ID . " type=\"" . $arrTIPOS[$TIPO] . "\" size=\"" . strval($TAM) . "\" maxlength=\"" . strval($TAMTOT) . "\" value=\"" . $CAMPOS[$NOME] . "\">";
+						echo "</td>";
+						echo "</tr>";
+						}
+					?>
+				</table>
+				<a href="?action=delesave&Id=<?php echo $Id ?>&CodUser=1">CONFIRMA DELEÇÃO DO REGISTRO <?php echo $Id ?></a>
+				</center>
+				<?php
+				break;
+			// Ação de persistência de  deleção de registros
+			case "delesave":
+				echo "Efetiva a deleção.";
+				$strSQL = "DELETE FROM " . $TABELA;
+				$strSQL .= " WHERE Id = " . $_GET["Id"];
+				echo $strSQL . "<br>";
+				include "connection.php";
+				$conn->exec($strSQL);
+				include "connection_close.php";				
+				echo $BACK_MAIN_SCREEN;				
 				break;
 			/*
 				Ação de pesquisa de acordo com um determinado parâmetro

@@ -1,0 +1,21 @@
+<script>
+	/*
+		SPLICE(<Elemento de referência>, <Elementos substituídos>,'CONTEÚDO SUBSTITUINTE')
+	*/
+	const months = ['Jan', 'March', 'April', 'June'];
+	// Se <Elementos substituídos> = 0, trata-se de uma INCLUSÃO (antes do elemento '1')
+	months.splice(1, 0, 'Feb');
+	// Inserts at index 1
+	console.log(months);
+	// Expected output: Array ["Jan", "Feb", "March", "April", "June"]
+	// Se <Elementos substituídos> = 1, o elemento 4 (no caso), será substituído
+	months.splice(4, 1, 'May');
+	// Replaces 1 element at index 4
+	console.log(months);
+	// Expected output: Array ["Jan", "Feb", "March", "April", "May"]
+	// Se <Elementos substituídos> = 2, os elementos 1 e 2 (no caso), serão substituídos
+	months.splice(1, 2, 'Mes2');
+	// Replaces 1 element at index 4
+	console.log(months);	
+	// Expected output: Array ['Jan', 'Mes2', 'April', 'May']
+</script>

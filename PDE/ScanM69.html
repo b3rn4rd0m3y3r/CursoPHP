@@ -1,0 +1,40 @@
+<script>
+function parse(str) {
+    var signs = ["*", "/","+","-"];             // signs in the order in which they should be evaluated
+    var funcs = [multiply, divide, add, subtract];                     // the functions associated with the signs
+    var tokens = str.split(/\b/);          // split the string into "tokens" (numbers or signs)
+    for (var passo = 0; passo < signs.length; passo++) {              // do this for every sign
+        document.write("tokens at this point: " + tokens.join(" ") + "<BR>");
+        for (var place = 0; place < tokens.length; place++) {        // do this for every token
+            if (tokens[place] == signs[passo]) {                             // a sign is found
+                var a = parseInt(tokens[place - 1]);        // convert previous token to number
+                var b = parseInt(tokens[place + 1]);            // convert next token to number
+                var result = funcs[passo](a, b);               // call the appropriate function
+                document.write("calculating: " + a + signs[passo] + b + "=" + result + "<BR>");
+                tokens[place - 1] = result.toString();          // store the result as a string
+                tokens.splice(place--, 2);      // delete obsolete tokens and back up one place
+            }
+        }
+    }
+    return tokens[0];                      // at the end tokens[] has only one item: the result
+
+    function multiply(x, y) {                       // the functions which actually do the math
+        return x * y;
+    }
+
+    function divide(x, y) {                       // the functions which actually do the math
+        return x / y;
+    }
+
+    function add(x, y) {                            // the functions which actually do the math
+        return x + y;
+    }
+    
+    function subtract(x, y) {                            // the functions which actually do the math
+        return x - y;
+    }
+}
+
+var str = "25*5-8*11/4+5*7-2";
+document.write("result: " + str + " = " + parse(str));
+</script>

@@ -6,6 +6,7 @@ BODY {
 	font-family: "Lucida Sans", Arial;
 	font-size: 14px;
 	}
+
 H1 {
 	color: #404080;
 	font-size: 36px;
@@ -33,6 +34,9 @@ SPAN.erro {
 	color:red;
 	font-weight: bold;
 	line-height: 200%;
+	}
+TABLE.entry {
+	padding-top: 30px;
 	}
 TH {
 	background-color: gray;
