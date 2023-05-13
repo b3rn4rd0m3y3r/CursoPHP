@@ -27,8 +27,31 @@ H1 ~ H2, H1.streito {
 	margin-block-start: 0em;
 	margin-block-end:  0em;
 	}
+INPUT, SELECT, TEXTAREA {
+	border-color: #405080;
+	border-width: 1px;
+	color: #405080;
+	}
 INPUT.qry {
+	background: #405080;
+	color: white;
 	width: 80px;
+	}
+input[type="date" i] {
+    background-color: aliceblue;
+	color: #405080;	
+	}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+    background-color: aliceblue;
+	color: #405080;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+LABEL {
+	color: #405080;
+	font-weight: bold;
 	}
 SPAN.erro {
 	color:red;
