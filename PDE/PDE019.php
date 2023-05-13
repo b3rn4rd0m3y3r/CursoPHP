@@ -28,7 +28,7 @@
 		<h2><?php echo u2iso($SUBTITULO); ?> [<?php echo $TABELA; ?>]</h2>
 		<?php
 		switch ($action){
-			// Ação de preparação de  inclusão de registros
+			// AÃ§Ã£o de preparaÃ§Ã£o de  inclusão de registros
 			case "add":	
 		?>
 			<form method="post" action="?action=addsave&CodUsr=1">
@@ -197,42 +197,42 @@
 				include "connection_close.php";				
 				break;
 			/*
-				Ação de pesquisa de acordo com um determinado parâmetro
+				AÃ§Ã£o de pesquisa de acordo com um determinado parÃ¢metro
 			*/
 			case "list":
 				$PsqFieldName = $_POST["Botao"];
 				$PsqFieldCont = $_POST[$_POST["Botao"]];
 				echo "Nome do campo: " . $PsqFieldName . "<br>";
-				echo "Conteúdo .........: " . $PsqFieldCont . "<br>";
-				// Constrói o SQL para pesquisa do registro que tem este Id
+				echo "ConteÃºdo .........: " . $PsqFieldCont . "<br>";
+				// ConstrÃ³i o SQL para pesquisa do registro que tem este Id
 				$strSQL = "SELECT * FROM " . $TABELA . " WHERE Id > 0 ";
 				$strSQL .= " AND " . $PsqFieldName . " LIKE '%" . $PsqFieldCont . "%'";
 				echo $strSQL . "<br>";
-				// Abre Conexão
+				// Abre ConexÃ£o
 				include "connection.php";
 				$comm = $conn->prepare($strSQL);
 				$comm->execute();
 				echo "<table cellspacing=0 border=1>";
-				echo "<tr>";
-				foreach( $arr as $key => $valor ){
-					$NOME = $valor->nome;
-					$LABEL = u2iso($valor->label);
-					$TIPO = $valor->tipo;
-					echo "<th>" . $LABEL . "</th>";
-					}
-				echo "</tr>";
-				while( $row = $comm->fetch() ){
 					echo "<tr>";
 					foreach( $arr as $key => $valor ){
 						$NOME = $valor->nome;
+						$LABEL = u2iso($valor->label);
 						$TIPO = $valor->tipo;
-						echo "<td>" . $row[$NOME] . "</td>";
+						echo "<th>" . $LABEL . "</th>";
 						}
 					echo "</tr>";
-					}
+					while( $row = $comm->fetch() ){
+						echo "<tr>";
+						foreach( $arr as $key => $valor ){
+							$NOME = $valor->nome;
+							$TIPO = $valor->tipo;
+							echo "<td>" . $row[$NOME] . "</td>";
+							}
+						echo "</tr>";
+						}
 				echo "<table>";
 				$CAMPOS = $row;
-				// Fecha Conexão
+				// Fecha ConexÃ£o
 				include "connection_close.php";
 				
 				break;
@@ -260,7 +260,7 @@
 								}
 							echo "</select>";
 							} else {							
-							// Não sendo Textarea e nem Select ...
+							// NÃ£o sendo Textarea e nem Select ...
 							echo "<input " . $ID . " type=\"" . $arrTIPOS[$TIPO] . "\" size=\"" . strval($TAM) . "\" maxlength=\"" . strval($TAMTOT) . "\">";
 							}
 						echo "</td><td>";

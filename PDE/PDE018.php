@@ -1,5 +1,6 @@
 <html>
-	<!-- Campo SELECT e Gravação no banco de dados: montagem sentença SQL -->
+	<!-- PersistÃªncia no banco de dados: montagem sentenÃ§a SQL -->
+	<!-- AÃ§Ã£o default de pesquisa de conteÃºdos na tabela -->
 	<?php
 		include "Funcoes.php";
 		if( isset($_GET["action"]) ){
@@ -28,7 +29,7 @@
 		<h2><?php echo u2iso($SUBTITULO); ?> [<?php echo $TABELA; ?>]</h2>
 		<?php
 		switch ($action){
-			// Ação de preparação de  inclusão de registros
+			// AÃ§Ã£o de preparaÃ§Ã£o de  inclusÃ£o de registros
 			case "add":	
 		?>
 			<form method="post" action="?action=addsave&CodUsr=1">
@@ -58,7 +59,7 @@
 									}
 								echo "</select>";
 								} else {							
-								// Não sendo Textarea e nem Select ...
+								// NÃ£o sendo Textarea e nem Select ...
 								echo "<input " . $ID . " type=\"" . $arrTIPOS[$TIPO] . "\" size=\"" . strval($TAM) . "\" maxlength=\"" . strval($TAMTOT) . "\">";
 								}
 							}
@@ -70,7 +71,7 @@
 			</form>
 		<?php
 				break;
-			// Ação de inclusão de registros no banco de dados
+			// AÃ§Ã£o de inclusÃ£o de registros no banco de dados
 			case "addsave":
 				// Coleta dos campos do formulário
 				echo "<table>";
@@ -197,18 +198,18 @@
 				include "connection_close.php";				
 				break;
 			/*
-				Ação de pesquisa de acordo com um determinado parâmetro
+				AÃ§Ã£o de pesquisa de acordo com um determinado parÃ¢metro
 			*/
 			case "list":
 				$PsqFieldName = $_POST["Botao"];
 				$PsqFieldCont = $_POST[$_POST["Botao"]];
 				echo "Nome do campo: " . $PsqFieldName . "<br>";
-				echo "Conteúdo .........: " . $PsqFieldCont . "<br>";
-				// Constrói o SQL para pesquisa do registro que tem este Id
+				echo "ConteÃºdo .........: " . $PsqFieldCont . "<br>";
+				// ConstrÃ³i o SQL para pesquisa do registro que tem este Id
 				$strSQL = "SELECT * FROM " . $TABELA . " WHERE Id > 0 ";
 				$strSQL .= " AND " . $PsqFieldName . " LIKE '%" . $PsqFieldCont . "%'";
 				echo $strSQL . "<br>";
-				// Abre Conexão
+				// Abre ConexÃ£o
 				include "connection.php";
 				$comm = $conn->prepare($strSQL);
 				$comm->execute();
@@ -216,10 +217,11 @@
 					echo "&bull; " . $row["Id"] . " - " . $row["Matr"] . " - " . $row["DtReg"] . "<br>";
 					}
 				$CAMPOS = $row;
-				// Fecha Conexão
+				// Fecha ConexÃ£o
 				include "connection_close.php";
 				
 				break;
+			// AÃ§Ã£o default mostra um formulÃ¡rio de pesquisa
 			default:
 		?>
 			<form method="post" action="?action=list&CodUsr=1">
@@ -244,7 +246,7 @@
 								}
 							echo "</select>";
 							} else {							
-							// Não sendo Textarea e nem Select ...
+							// NÃ£o sendo Textarea e nem Select ...
 							echo "<input " . $ID . " type=\"" . $arrTIPOS[$TIPO] . "\" size=\"" . strval($TAM) . "\" maxlength=\"" . strval($TAMTOT) . "\">";
 							}
 						echo "</td><td>";
