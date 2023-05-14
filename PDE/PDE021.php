@@ -1,5 +1,5 @@
 <html>
-	<!-- Campo SELECT e GravaÁ„o no banco de dados: montagem sentenÁa SQL -->
+	<!-- A√ß√µes "dele" e "delesave" --> -->
 	<?php
 		include "Funcoes.php";
 		if( isset($_GET["action"]) ){
@@ -200,30 +200,29 @@
 				include "connection_close.php";				
 				echo $BACK_MAIN_SCREEN;
 				break;
-			// AÁ„o de preparaÁ„o de  deleÁ„o de registros
+			// A√ß√£o de prepara√ß√£o de  dele√ß√£o de registros
 			case "dele":
-				if( $IDFOUND == 0 ){ // Teste de presenÁa de um par‚metro Id
-					exit("<span class=erro>PDE - EdiÁ„o necessita do par‚metro Id preenchido.</span>");
+				if( $IDFOUND == 0 ){ // Teste de presen√ßa de um par√¢metro Id
+					exit("<span class=erro>PDE - Dele√ß√£o necessita do par√¢metro Id preenchido.</span>");
 					}
 				$Id = $_GET["Id"];
-				// Teste de preenchimento do par‚metro Id
+				// Teste de preenchimento do par√¢metro Id
 				if( $Id == "" ){
-					exit("<span class=erro>PDE - Par‚metro Id presente mas n„o preenchido.</span>");
+					exit("<span class=erro>PDE - Par√¢metro Id presente mas n√£o preenchido.</span>");
 					}				
-				// ConstrÛi o SQL para pesquisa do registro que tem este Id
+				// Constr√≥i o SQL para pesquisa do registro que tem este Id
 				$strSQL = "SELECT * FROM " . $TABELA . " WHERE Id = " .  $Id;
 				echo $strSQL . "<br>";
-				// Abre Conex„o
+				// Abre Conex√£o
 				include "connection.php";
 				$comm = $conn->prepare($strSQL);
 				$comm->execute();
 				$row = $comm->fetch();
 				$CAMPOS = $row;
-				//print_r($CAMPOS);
-				// Fecha Conex„o
+				// Fecha Conex√£o
 				include "connection_close.php";
 				?>
-				<!-- Formul·rio -->
+				<!-- Formul√°rio -->
 				<center>
 				<table class=entry>
 					<?php
@@ -241,13 +240,13 @@
 						}
 					?>
 				</table>
-				<a href="?action=delesave&Id=<?php echo $Id ?>&CodUser=1">CONFIRMA DELE«√O DO REGISTRO <?php echo $Id ?></a>
+				<a href="?action=delesave&Id=<?php echo $Id ?>&CodUser=1">CONFIRMA DELE√á√ÉO DO REGISTRO <?php echo $Id ?></a>
 				</center>
 				<?php
 				break;
-			// AÁ„o de persistÍncia de  deleÁ„o de registros
+			// A√ß√£o de persist√™ncia de  dele√ß√£o de registros
 			case "delesave":
-				echo "Efetiva a deleÁ„o.";
+				echo "Efetiva a dele√ß√£o.";
 				$strSQL = "DELETE FROM " . $TABELA;
 				$strSQL .= " WHERE Id = " . $_GET["Id"];
 				echo $strSQL . "<br>";
@@ -257,18 +256,18 @@
 				echo $BACK_MAIN_SCREEN;				
 				break;
 			/*
-				AÁ„o de pesquisa de acordo com um determinado par‚metro
+				A√ß√£o de pesquisa de acordo com um determinado par√¢metro
 			*/
 			case "list":
 				$PsqFieldName = $_POST["Botao"];
 				$PsqFieldCont = $_POST[$_POST["Botao"]];
 				echo "Nome do campo: " . $PsqFieldName . "<br>";
-				echo "Conte˙do .........: " . $PsqFieldCont . "<br>";
-				// ConstrÛi o SQL para pesquisa do registro que tem este Id
+				echo "Conte√∫do .........: " . $PsqFieldCont . "<br>";
+				// Constr√≥i o SQL para pesquisa do registro que tem este Id
 				$strSQL = "SELECT * FROM " . $TABELA . " WHERE Id > 0 ";
 				$strSQL .= " AND " . $PsqFieldName . " LIKE '%" . $PsqFieldCont . "%'";
 				echo $strSQL . "<br>";
-				// Abre Conex„o
+				// Abre Conex√£o
 				include "connection.php";
 				$comm = $conn->prepare($strSQL);
 				$comm->execute();

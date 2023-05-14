@@ -1,5 +1,6 @@
 <html>
-	<!-- Campo SELECT e Gravação no banco de dados: montagem sentença SQL -->
+	<!-- InterpretaÃ§Ã£o das permissÃµes colocadas no modelo JSON e aÃ§Ãµes de registro  -->
+	<!-- Tratamento da data com dtSepar em funcoes.php -->
 	<?php
 		include "Funcoes.php";
 		if( isset($_GET["action"]) ){
@@ -212,7 +213,7 @@
 				$strSQL = "SELECT * FROM " . $TABELA . " WHERE Id > 0 ";
 				$strSQL .= " AND " . $PsqFieldName . " LIKE '%" . $PsqFieldCont . "%'";
 				echo $strSQL . "<br>";
-				// Abre Conexão
+				// Abre ConexÃ£o
 				include "connection.php";
 				$comm = $conn->prepare($strSQL);
 				$comm->execute();
@@ -248,7 +249,7 @@
 						
 						echo "</td>";
 						}
-					// Campos de controle de acordo com as permissões
+					// Campos de controle de acordo com as permissÃµes
 					if( $PERMISSOES->add == "S" ){
 						echo "<td align=center><a class=blue href=\"?action=add&CodUsr=1\" target=\"NewReg\">&#10009;</a></td>";
 						} else {
