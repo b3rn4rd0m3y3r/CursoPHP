@@ -6,6 +6,9 @@
 		return iconv("ISO-8859-1","UTF-8", $tx);
 		}
 	function dtSepar($sdate){
+		if( $sdate == "" ){
+			return "";
+			}
 		list($ano, $mes,$dia) = explode("-", $sdate);
 		return $dia . "/" . $mes . "/" . $ano;
 		}
