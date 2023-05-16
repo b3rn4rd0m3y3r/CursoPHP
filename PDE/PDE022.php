@@ -1,5 +1,5 @@
 <html>
-	<!-- Configurando o comportamento do parâmetro CodUsr em relação à edição dos campos -->
+	<!-- Configurando o comportamento do parÃ¢metro CodUsr em relaÃ§Ã£o Ã  ediÃ§Ã£o dos campos -->
 	<?php
 		include "Funcoes.php";
 		if( isset($_GET["action"]) ){

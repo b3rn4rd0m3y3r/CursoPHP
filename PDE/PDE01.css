@@ -6,7 +6,12 @@ BODY {
 	font-family: "Lucida Sans", Arial;
 	font-size: 14px;
 	}
-
+BUTTON.openform {
+	background: white;
+	color: white;
+	padding: 2px;
+	text-align: center;	
+	}
 H1 {
 	color: #404080;
 	font-size: 36px;
@@ -32,7 +37,10 @@ INPUT, SELECT, TEXTAREA {
 	border-width: 1px;
 	color: #405080;
 	}
-INPUT.qry {
+input:read-only {
+	background: lightsteelblue;
+	}
+INPUT.qry, INPUT[type="submit"] {
 	background: #405080;
 	color: white;
 	width: 80px;
@@ -49,9 +57,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
     border-radius: 8px;
 }
+
 LABEL {
 	color: #405080;
 	font-weight: bold;
+	}
+SPAN.contorno {
+	background: #404080;
+	border: solid 1px #405080;
+	padding: 1px;
 	}
 SPAN.erro {
 	color:red;
