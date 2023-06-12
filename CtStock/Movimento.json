@@ -1,0 +1,26 @@
+{
+	"titulo": "Controle de Estoque",
+	"subtitulo": "Registro do Movimento do Estoque",
+	"tabela": "Movimento",
+	"permissao" : {
+		"add": "S",
+		"dele": "N",
+		"edit": "N",
+		"list": "S",
+		"view": "S"
+		},
+	"email": "true",
+	"campos": {
+		"0": {"nome": "Id", "label": "Id", "tam": "6", "tamtot": "6", "tipo": "I", "coduser": "0"},
+		"1": {"nome": "IdProd", "label": "Produto", "tam": "6", "tamtot": "6", "tipo": "C", "coduser": "1"},
+		"2": {"nome": "QuantProd", "label": "Quantidade<br>Movimentada", "tam": "6", "tamtot": "6", "tipo": "C", "coduser": "1"},
+		"3": {"nome": "TpReg", "label": "Tipo registro", "tam": "10", "tamtot": "10", "tipo": "C", "coduser": "1",
+			"sele" :{
+				"0":"Entrada",
+				"1":"Saida",
+				"2":"Inicial",
+				"3":"Estorno"
+				}
+			}
+		}
+	}

@@ -1,0 +1,20 @@
+{
+	"titulo": "Controle de Produtos",
+	"subtitulo": "Registro de Produtos no Estoque",
+	"tabela": "Produto",
+	"permissao" : {
+		"add": "S",
+		"dele": "S",
+		"edit": "S",
+		"list": "S",
+		"view": "S"
+		},
+	"email": "true",
+	"campos": {
+		"0": {"nome": "Id", "label": "Id", "tam": "6", "tamtot": "6", "tipo": "I", "coduser": "0"},
+		"1": {"nome": "CodProd", "label": "Código", "tam": "6", "tamtot": "6", "tipo": "C", "coduser": "1"},
+		"2": {"nome": "Quant", "label": "Quantidade", "tam": "6", "tamtot": "6", "tipo": "C", "coduser": "1"},
+		"3": {"nome": "Descri", "label": "Descrição", "tam": "50", "tamtot": "150", "tipo": "C", "coduser": "1"},
+		"4": {"nome": "Fornecedor", "label": "Fornecedor", "tam": "50", "tamtot": "50", "tipo": "C", "coduser": "1"}
+		}
+	}

@@ -1,0 +1,21 @@
+/* CtStockAeco */
+A {
+	text-decoration: none; 
+	}
+BODY {
+	font-family: Lucida Sans;
+	}
+DIV.menu {
+	height:70%;
+	margin-top: 5%;
+	width: 25%;
+	}
+H1.tit {
+	border-radius: 8px;
+	font-size: 48px;
+	font-weight: bold;
+	width: 80%;
+	}
+UL LI A {
+	font-size: 36px;
+	}
