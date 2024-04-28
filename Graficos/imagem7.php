@@ -1,7 +1,7 @@
 <?php
 $x = 250; $y = 210;
 $image=imagecreatetruecolor($x, $y);
-$image = imagecreatefromjpeg('img.jpg');
+$image = imagecreatefromjpeg('img2.jpg');
 $white= imagecolorallocatealpha($image, 0, 0, 0, 75);
 // Draw the polygon
 imagepolygon($image, array(
